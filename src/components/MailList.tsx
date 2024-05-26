@@ -13,7 +13,7 @@ const MailList = () => {
         <Avatar alt={email.sender} sx={{ bgcolor: cyan[600] }}>{email.sender.split(' ')[0][0].toUpperCase()}</Avatar>
       </ListItemAvatar>
       <ListItemText
-        primary={email.sender}
+        primary={<span style={{ fontWeight: 'bold' }}>{email.sender}</span>}
         secondary={
           <Fragment>
             <Typography
@@ -21,8 +21,9 @@ const MailList = () => {
               component="span"
               variant="body2"
               color="text.primary"
+              fontWeight="bold"
             >
-              {email.subjectLine1}
+              {email.subjectLine1.length > 0 ? email.subjectLine1 : email.subjectLine2}
             </Typography>
             <br />
             {email.previewText}

@@ -13,8 +13,10 @@ const SubjectForm = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
+    const subj1Chosen = confirm('Select Subject 1?')
+
     if (emailData.sender.length > 0 && emailData.previewText.length > 0 && (emailData.subjectLine1.length > 0 || emailData.subjectLine2.length > 0)) {
-      dispatch(addToList(emailData))
+      dispatch(addToList({ ...emailData, subjectLine1: subj1Chosen ? emailData.subjectLine1 : '', subjectLine2: subj1Chosen ? '' : emailData.subjectLine2 }))
     }
 
     dispatch(setSender(''))

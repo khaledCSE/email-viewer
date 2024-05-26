@@ -9,9 +9,12 @@ export const emailListSlice = createSlice({
   reducers: {
     addToList: (state, action: PayloadAction<IEmailState>) => {
       state.push(action.payload)
+    },
+    emptyList: () => {
+      return []
     }
   }
 })
 
-export const { addToList } = emailListSlice.actions
+export const { addToList, emptyList } = emailListSlice.actions
 export default emailListSlice.reducer
