@@ -3,6 +3,7 @@ import { deepOrange, deepPurple } from '@mui/material/colors'
 import { useSelector } from 'react-redux'
 import { Fragment } from 'react/jsx-runtime'
 import { RootState } from '../store'
+import MailList from './MailList'
 
 const MailView = () => {
   const emailData = useSelector((state: RootState) => state.email)
@@ -12,7 +13,7 @@ const MailView = () => {
     <Card sx={{ padding: 5, height: '600px' }}>
       <Typography variant='h6'>Email Preview</Typography>
       <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-        {emailData.sender ? (<>
+        {(emailData.sender && emailData.sender.length > 0) ? (<>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
               <Avatar alt="Remy Sharp" sx={{ bgcolor: deepOrange[500] }}>A</Avatar>
@@ -62,28 +63,9 @@ const MailView = () => {
         </>) : <Typography variant='subtitle1' color="GrayText">Fill up sender info first</Typography>}
 
         <Divider variant="inset" component="li" />
+        <Typography variant='body1'>Saved Emails</Typography>
         {emailList.length > 0 ? (
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <Avatar alt="Travis Howard">TH</Avatar>
-            </ListItemAvatar>
-            <ListItemText
-              primary="Summer BBQ"
-              secondary={
-                <Fragment>
-                  <Typography
-                    sx={{ display: 'inline' }}
-                    component="span"
-                    variant="body2"
-                    color="text.primary"
-                  >
-                    to Scott, Alex, Jennifer
-                  </Typography>
-                  {" — Wish I could come, but I'm out of town this…"}
-                </Fragment>
-              }
-            />
-          </ListItem>
+          <MailList />
         ) : <Typography variant='subtitle1' color="GrayText">No emails</Typography>}
       </List>
     </Card>
