@@ -7,10 +7,10 @@ export default function App() {
   return (
     <Container sx={{ padding: 5 }}>
       <Grid2 container spacing={2}>
-        <Grid2 xs={6}>
+        <Grid2 sm={6} xs={12}>
           <SubjectForm />
         </Grid2>
-        <Grid2 xs={6}>
+        <Grid2 sm={6} xs={12}>
           <MailView />
         </Grid2>
       </Grid2>
